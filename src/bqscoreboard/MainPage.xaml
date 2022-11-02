@@ -3,12 +3,223 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:bqscoreboard="clr-namespace:bqscoreboard"
              Title="BQScoreboard"
+             BackgroundColor="Grey"
              x:Class="bqscoreboard.MainPage">
     
     <ContentPage.BindingContext>
         <bqscoreboard:MainPageViewModel />
     </ContentPage.BindingContext>
 
-    <Label Text="{Binding Greeting}"></Label>
+    <ContentPage.Resources>
+
+        <Style x:Key="ScoreGlobalStyle" TargetType="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="TitleRowStyle" TargetType="Label" BasedOn="{StaticResource ScoreGlobalStyle}">
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+
+        <Style x:Key="ScoreRowStyle" TargetType="Label" BasedOn="{StaticResource ScoreGlobalStyle}">
+            <Setter Property="FontSize" Value="96" />
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="BackgroundColor" Value="Black" />
+        </Style>
+
+        <Style x:Key="ScoreButtonStyle" TargetType="Button">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="BorderColor" Value="Black" />
+        </Style>
+
+        <Style x:Key="ScoreGridStyle" TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="10" />
+            <Setter Property="RowSpacing" Value="10" />
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid 
+        RowDefinitions="4*, 4*, 4*, 1*"
+        ColumnDefinitions="1*, 1*, 1*, 1*"
+        Padding="10"
+        Style="{StaticResource ScoreGridStyle}"
+        >
+
+        <Label 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Style="{StaticResource TitleRowStyle}"
+            Text="Question Number"/>
+
+        <Label 
+            Grid.Row="0" 
+            Grid.Column="1" 
+            Style="{StaticResource TitleRowStyle}"
+            Text="Soli"/>
+
+        <Label 
+            Grid.Row="0" 
+            Grid.Column="2" 
+            Style="{StaticResource TitleRowStyle}"
+            Text="Deo"/>
+
+        <Label 
+            Grid.Row="0" 
+            Grid.Column="3" 
+            Style="{StaticResource TitleRowStyle}"
+            Text="Gloria"/>
+
+        <Label 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text="{Binding QuestionSuffix}"/>
+
+        <Label 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text=""/>
+
+        <Label 
+            Grid.Row="1" 
+            Grid.Column="2" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text=""/>
+
+        <Label 
+            Grid.Row="1" 
+            Grid.Column="3" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text=""/>
+
+        <Label 
+            Grid.Row="2" 
+            Grid.Column="0" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text="{Binding QuestionNumber}"/>
+
+        <Label 
+            Grid.Row="2" 
+            Grid.Column="1" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text="{Binding Team1Score}"/>
+
+        <Label 
+            Grid.Row="2" 
+            Grid.Column="2" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text="{Binding Team2Score}"/>
+
+        <Label 
+            Grid.Row="2" 
+            Grid.Column="3" 
+            Style="{StaticResource ScoreRowStyle}"
+            Text="{Binding Team3Score}"/>
+
+        <Grid
+            Grid.Row="3"
+            Grid.Column="0"
+            RowDefinitions="*"
+            ColumnDefinitions="1*, 1*, 1*"
+            Style="{StaticResource ScoreGridStyle}">
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="AB"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding QuestionSuffixToggle}"/>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="-1"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding QuestionMinus1}"/>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="+1"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding QuestionPlus1}"/>
+
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            Grid.Column="1"
+            RowDefinitions="*"
+            ColumnDefinitions="1*, 1*"
+            Style="{StaticResource ScoreGridStyle}">
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="-10"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding Team1Minus10}"/>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="+10"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding Team1Plus10}"/>
+
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            Grid.Column="2"
+            RowDefinitions="*"
+            ColumnDefinitions="1*, 1*"
+            Style="{StaticResource ScoreGridStyle}">
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="-10"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding Team2Minus10}"/>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="+10"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding Team2Plus10}"/>
+
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            Grid.Column="3"
+            RowDefinitions="*"
+            ColumnDefinitions="1*, 1*"
+            Style="{StaticResource ScoreGridStyle}">
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="-10"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding Team3Minus10}"/>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="+10"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding Team3Plus10}"/>
+
+        </Grid>
+
+    </Grid>
 
 </ContentPage>
