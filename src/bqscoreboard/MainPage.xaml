@@ -24,7 +24,7 @@
         </Style>
 
         <Style x:Key="ScoreRowStyle" TargetType="Label" BasedOn="{StaticResource ScoreGlobalStyle}">
-            <Setter Property="FontSize" Value="96" />
+            <Setter Property="FontSize" Value="146" />
             <Setter Property="TextColor" Value="Red" />
             <Setter Property="BackgroundColor" Value="Black" />
         </Style>
