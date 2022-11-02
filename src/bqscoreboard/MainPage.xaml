@@ -125,26 +125,33 @@
             Grid.Row="3"
             Grid.Column="0"
             RowDefinitions="*"
-            ColumnDefinitions="1*, 1*, 1*"
+            ColumnDefinitions="1*, 1*, 1*, 1*"
             Style="{StaticResource ScoreGridStyle}">
 
             <Button
                 Grid.Row="0"
                 Grid.Column="0"
+                Text="X"
+                Style="{StaticResource ScoreButtonStyle}"
+                Command="{Binding ResetScoreboard}"/>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
                 Text="AB"
                 Style="{StaticResource ScoreButtonStyle}"
                 Command="{Binding QuestionSuffixToggle}"/>
 
             <Button
                 Grid.Row="0"
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="-1"
                 Style="{StaticResource ScoreButtonStyle}"
                 Command="{Binding QuestionMinus1}"/>
 
             <Button
                 Grid.Row="0"
-                Grid.Column="2"
+                Grid.Column="3"
                 Text="+1"
                 Style="{StaticResource ScoreButtonStyle}"
                 Command="{Binding QuestionPlus1}"/>

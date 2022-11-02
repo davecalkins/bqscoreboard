@@ -44,6 +44,8 @@ namespace bqscoreboard
             set => SetProperty(ref _team3Score, value);
         }
 
+        public ICommand ResetScoreboard => new Command(ResetScoreboardInternal);
+
         public ICommand QuestionSuffixToggle => new Command(() =>
         {
             switch (QuestionSuffix)
@@ -75,10 +77,10 @@ namespace bqscoreboard
 
         public void Initialize()
         {
-            ResetScoreboard();
+            ResetScoreboardInternal();
         }
 
-        private void ResetScoreboard()
+        private void ResetScoreboardInternal()
         {
             QuestionNumber = 1;
             QuestionSuffix = "";
