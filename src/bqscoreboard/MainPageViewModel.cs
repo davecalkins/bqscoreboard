@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.Maui.Audio;
 
 namespace bqscoreboard
 {
@@ -51,6 +52,8 @@ namespace bqscoreboard
             Team1Score = Team2Score = Team3Score = 0;
 
             Save();
+
+            _resetPlayer.Play();
         });
 
         public ICommand QuestionSuffixToggle => new Command(() =>
@@ -70,24 +73,33 @@ namespace bqscoreboard
             }
 
             Save();
+            _buttonPlayer.Play();
         });
 
-        public ICommand QuestionMinus1 => new Command(() => { QuestionNumber -= 1; Save(); });
-        public ICommand QuestionPlus1 => new Command(() => { QuestionNumber += 1; Save(); });
+        public ICommand QuestionMinus1 => new Command(() => { QuestionNumber -= 1; Save(); _buttonPlayer.Play(); });
+        public ICommand QuestionPlus1 => new Command(() => { QuestionNumber += 1; Save(); _buttonPlayer.Play(); });
 
-        public ICommand Team1Minus10 => new Command(() => { Team1Score -= 10; Save(); });
-        public ICommand Team1Plus10 => new Command(() => { Team1Score += 10; Save(); });
+        public ICommand Team1Minus10 => new Command(() => { Team1Score -= 10; Save(); _buttonPlayer.Play(); });
+        public ICommand Team1Plus10 => new Command(() => { Team1Score += 10; Save(); _buttonPlayer.Play(); });
 
-        public ICommand Team2Minus10 => new Command(() => { Team2Score -= 10; Save(); });
-        public ICommand Team2Plus10 => new Command(() => { Team2Score += 10; Save(); });
+        public ICommand Team2Minus10 => new Command(() => { Team2Score -= 10; Save(); _buttonPlayer.Play(); });
+        public ICommand Team2Plus10 => new Command(() => { Team2Score += 10; Save(); _buttonPlayer.Play(); });
 
-        public ICommand Team3Minus10 => new Command(() => { Team3Score -= 10; Save(); });
-        public ICommand Team3Plus10 => new Command(() => { Team3Score += 10; Save(); });
+        public ICommand Team3Minus10 => new Command(() => { Team3Score -= 10; Save(); _buttonPlayer.Play(); });
+        public ICommand Team3Plus10 => new Command(() => { Team3Score += 10; Save(); _buttonPlayer.Play(); });
 
-        public void Initialize()
+        private IAudioPlayer _resetPlayer = null;
+        private IAudioPlayer _buttonPlayer = null;
+
+        public async void Initialize()
         {
             Load();
             Save();
+
+            _resetPlayer = AudioManager.Current.CreatePlayer(
+                await FileSystem.OpenAppPackageFileAsync("dreamstime_111325605_correct.wav"));
+            _buttonPlayer = AudioManager.Current.CreatePlayer(
+                await FileSystem.OpenAppPackageFileAsync("short-switch.wav"));
         }
 
         private void Load()

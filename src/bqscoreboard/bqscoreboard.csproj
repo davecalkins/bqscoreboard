@@ -48,4 +48,13 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Raw\dreamstime_111325605_correct.wav" />
+	  <None Remove="Resources\Raw\short-switch.wav" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Plugin.Maui.Audio" Version="0.1.0-preview2" />
+	</ItemGroup>
+
 </Project>
