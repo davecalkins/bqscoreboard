@@ -44,7 +44,14 @@ namespace bqscoreboard
             set => SetProperty(ref _team3Score, value);
         }
 
-        public ICommand ResetScoreboard => new Command(ResetScoreboardInternal);
+        public ICommand ResetScoreboard => new Command(() =>
+        {
+            QuestionNumber = 1;
+            QuestionSuffix = "";
+            Team1Score = Team2Score = Team3Score = 0;
+
+            Save();
+        });
 
         public ICommand QuestionSuffixToggle => new Command(() =>
         {
@@ -61,30 +68,46 @@ namespace bqscoreboard
                     QuestionSuffix = "";
                     break;
             }
+
+            Save();
         });
 
-        public ICommand QuestionMinus1 => new Command(() => { QuestionNumber -= 1; });
-        public ICommand QuestionPlus1 => new Command(() => { QuestionNumber += 1; });
+        public ICommand QuestionMinus1 => new Command(() => { QuestionNumber -= 1; Save(); });
+        public ICommand QuestionPlus1 => new Command(() => { QuestionNumber += 1; Save(); });
 
-        public ICommand Team1Minus10 => new Command(() => { Team1Score -= 10; });
-        public ICommand Team1Plus10 => new Command(() => { Team1Score += 10; });
+        public ICommand Team1Minus10 => new Command(() => { Team1Score -= 10; Save(); });
+        public ICommand Team1Plus10 => new Command(() => { Team1Score += 10; Save(); });
 
-        public ICommand Team2Minus10 => new Command(() => { Team2Score -= 10; });
-        public ICommand Team2Plus10 => new Command(() => { Team2Score += 10; });
+        public ICommand Team2Minus10 => new Command(() => { Team2Score -= 10; Save(); });
+        public ICommand Team2Plus10 => new Command(() => { Team2Score += 10; Save(); });
 
-        public ICommand Team3Minus10 => new Command(() => { Team3Score -= 10; });
-        public ICommand Team3Plus10 => new Command(() => { Team3Score += 10; });
+        public ICommand Team3Minus10 => new Command(() => { Team3Score -= 10; Save(); });
+        public ICommand Team3Plus10 => new Command(() => { Team3Score += 10; Save(); });
 
         public void Initialize()
         {
-            ResetScoreboardInternal();
+            Load();
+            Save();
         }
 
-        private void ResetScoreboardInternal()
+        private void Load()
         {
-            QuestionNumber = 1;
-            QuestionSuffix = "";
-            Team1Score = Team2Score = Team3Score = 0;
+            var p = Preferences.Default;
+            QuestionNumber = p.Get<int>("QuestionNumber", 1);
+            QuestionSuffix = p.Get<string>("QuestionSuffix", "");
+            Team1Score = p.Get<int>("Team1Score", 0);
+            Team2Score = p.Get<int>("Team2Score", 0);
+            Team3Score = p.Get<int>("Team3Score", 0);
+        }
+
+        private void Save()
+        {
+            var p = Preferences.Default;
+            p.Set<int>("QuestionNumber", QuestionNumber);
+            p.Set<string>("QuestionSuffix", QuestionSuffix);
+            p.Set<int>("Team1Score", Team1Score);
+            p.Set<int>("Team2Score", Team2Score);
+            p.Set<int>("Team3Score", Team3Score);
         }
     }
 }
