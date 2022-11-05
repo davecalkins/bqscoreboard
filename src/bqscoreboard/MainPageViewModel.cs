@@ -76,7 +76,18 @@ namespace bqscoreboard
             _buttonPlayer.Play();
         });
 
-        public ICommand QuestionMinus1 => new Command(() => { QuestionNumber -= 1; Save(); _buttonPlayer.Play(); });
+        public ICommand QuestionMinus1 => new Command(() =>
+        {
+            if (QuestionNumber <= 1)
+            {
+                _errorPlayer.Play();
+                return;
+            }
+
+            QuestionNumber -= 1;
+            Save(); 
+            _buttonPlayer.Play();
+        });
         public ICommand QuestionPlus1 => new Command(() => { QuestionNumber += 1; Save(); _buttonPlayer.Play(); });
 
         public ICommand Team1Minus10 => new Command(() => { Team1Score -= 10; Save(); _buttonPlayer.Play(); });
@@ -90,6 +101,7 @@ namespace bqscoreboard
 
         private IAudioPlayer _resetPlayer = null;
         private IAudioPlayer _buttonPlayer = null;
+        private IAudioPlayer _errorPlayer = null;
 
         public async void Initialize()
         {
@@ -100,6 +112,8 @@ namespace bqscoreboard
                 await FileSystem.OpenAppPackageFileAsync("dreamstime_111325605_correct.wav"));
             _buttonPlayer = AudioManager.Current.CreatePlayer(
                 await FileSystem.OpenAppPackageFileAsync("short-switch.wav"));
+            _errorPlayer = AudioManager.Current.CreatePlayer(
+                await FileSystem.OpenAppPackageFileAsync("computerbeep_3.wav"));
         }
 
         private void Load()
