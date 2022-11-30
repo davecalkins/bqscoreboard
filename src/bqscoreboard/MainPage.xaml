@@ -30,6 +30,15 @@
             <Setter Property="BackgroundColor" Value="Black" />
         </Style>
 
+        <Style x:Key="TeamNameStyle" TargetType="Entry">
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="58" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="White" />           
+        </Style>
+        
         <Style x:Key="ScoreButtonStyle" TargetType="Button">
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="FontSize" Value="24" />
@@ -59,23 +68,23 @@
             Style="{StaticResource TitleRowStyle}"
             Text="Question Number"/>
 
-        <Label 
+        <Entry
             Grid.Row="0" 
             Grid.Column="1" 
-            Style="{StaticResource TitleRowStyle}"
-            Text="Soli"/>
+            Style="{StaticResource TeamNameStyle}"
+            Text="{Binding Team1Name}"/>
 
-        <Label 
+        <Entry 
             Grid.Row="0" 
             Grid.Column="2" 
-            Style="{StaticResource TitleRowStyle}"
-            Text="Deo"/>
+            Style="{StaticResource TeamNameStyle}"
+            Text="{Binding Team2Name}"/>
 
-        <Label 
+        <Entry 
             Grid.Row="0" 
             Grid.Column="3" 
-            Style="{StaticResource TitleRowStyle}"
-            Text="Gloria"/>
+            Style="{StaticResource TeamNameStyle}"
+            Text="{Binding Team3Name}"/>
 
         <Label 
             Grid.Row="1" 

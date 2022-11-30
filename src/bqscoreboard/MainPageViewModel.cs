@@ -10,6 +10,27 @@ namespace bqscoreboard
 {
     internal class MainPageViewModel : ViewModelBase
     {
+        private string _team1Name;
+        public string Team1Name
+        {
+            get => _team1Name;
+            set => SetProperty(ref _team1Name, value);
+        }
+
+        private string _team2Name;
+        public string Team2Name
+        {
+            get => _team2Name;
+            set => SetProperty(ref _team2Name, value);
+        }
+
+        private string _team3Name;
+        public string Team3Name
+        {
+            get => _team3Name;
+            set => SetProperty(ref _team3Name, value);
+        }
+
         private int _questionNumber;
         public int QuestionNumber
         {
@@ -121,6 +142,9 @@ namespace bqscoreboard
             var p = Preferences.Default;
             QuestionNumber = p.Get<int>("QuestionNumber", 1);
             QuestionSuffix = p.Get<string>("QuestionSuffix", "");
+            Team1Name = p.Get<string>("Team1Name", "Soli");
+            Team2Name = p.Get<string>("Team2Name", "Deo");
+            Team3Name = p.Get<string>("Team3Name", "Gloria");
             Team1Score = p.Get<int>("Team1Score", 0);
             Team2Score = p.Get<int>("Team2Score", 0);
             Team3Score = p.Get<int>("Team3Score", 0);
@@ -131,6 +155,9 @@ namespace bqscoreboard
             var p = Preferences.Default;
             p.Set<int>("QuestionNumber", QuestionNumber);
             p.Set<string>("QuestionSuffix", QuestionSuffix);
+            p.Set<string>("Team1Name", Team1Name);
+            p.Set<string>("Team2Name", Team2Name);
+            p.Set<string>("Team3Name", Team3Name);
             p.Set<int>("Team1Score", Team1Score);
             p.Set<int>("Team2Score", Team2Score);
             p.Set<int>("Team3Score", Team3Score);
