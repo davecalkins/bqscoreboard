@@ -7,5 +7,10 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
         (BindingContext as MainPageViewModel)?.Initialize();
     }
+
+    private void TeamNameChanged(object sender, TextChangedEventArgs e)
+    {
+        (BindingContext as MainPageViewModel)?.OnTeamNameChanged();
+    }
 }
 

@@ -72,18 +72,21 @@
             Grid.Row="0" 
             Grid.Column="1" 
             Style="{StaticResource TeamNameStyle}"
+            TextChanged="TeamNameChanged"
             Text="{Binding Team1Name}"/>
 
         <Entry 
             Grid.Row="0" 
             Grid.Column="2" 
             Style="{StaticResource TeamNameStyle}"
+            TextChanged="TeamNameChanged"
             Text="{Binding Team2Name}"/>
 
         <Entry 
             Grid.Row="0" 
             Grid.Column="3" 
             Style="{StaticResource TeamNameStyle}"
+            TextChanged="TeamNameChanged"
             Text="{Binding Team3Name}"/>
 
         <Label 

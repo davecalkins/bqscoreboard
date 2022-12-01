@@ -66,6 +66,11 @@ namespace bqscoreboard
             set => SetProperty(ref _team3Score, value);
         }
 
+        public void OnTeamNameChanged()
+        {
+            Save();
+        }
+
         public ICommand ResetScoreboard => new Command(() =>
         {
             QuestionNumber = 1;
@@ -127,7 +132,6 @@ namespace bqscoreboard
         public async void Initialize()
         {
             Load();
-            Save();
 
             _resetPlayer = AudioManager.Current.CreatePlayer(
                 await FileSystem.OpenAppPackageFileAsync("dreamstime_111325605_correct.wav"));
@@ -137,8 +141,12 @@ namespace bqscoreboard
                 await FileSystem.OpenAppPackageFileAsync("computerbeep_3.wav"));
         }
 
+        private bool _isLoading = false;
+
         private void Load()
         {
+            _isLoading = true;
+
             var p = Preferences.Default;
             QuestionNumber = p.Get<int>("QuestionNumber", 1);
             QuestionSuffix = p.Get<string>("QuestionSuffix", "");
@@ -148,10 +156,15 @@ namespace bqscoreboard
             Team1Score = p.Get<int>("Team1Score", 0);
             Team2Score = p.Get<int>("Team2Score", 0);
             Team3Score = p.Get<int>("Team3Score", 0);
+
+            _isLoading = false;
         }
 
         private void Save()
         {
+            if (_isLoading)
+                return;
+
             var p = Preferences.Default;
             p.Set<int>("QuestionNumber", QuestionNumber);
             p.Set<string>("QuestionSuffix", QuestionSuffix);
