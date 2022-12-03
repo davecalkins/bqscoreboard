@@ -73,6 +73,9 @@ namespace bqscoreboard
 
         public ICommand ResetScoreboard => new Command(() =>
         {
+            Team1Name = "Soli";
+            Team2Name = "Deo";
+            Team3Name = "Gloria";
             QuestionNumber = 1;
             QuestionSuffix = "";
             Team1Score = Team2Score = Team3Score = 0;
@@ -111,26 +114,17 @@ namespace bqscoreboard
         public ICommand Team3Minus10 => new Command(() => { Team3Score -= 10; Save(); });
         public ICommand Team3Plus10 => new Command(() => { Team3Score += 10; Save(); });
 
-        private IAudioPlayer _resetPlayer = null;
-        private IAudioPlayer _buttonPlayer = null;
         private IAudioPlayer _buttonDownPlayer = null;
         private IAudioPlayer _buttonUpPlayer = null;
-        private IAudioPlayer _errorPlayer = null;
 
         public async void Initialize()
         {
             Load();
 
-            _resetPlayer = AudioManager.Current.CreatePlayer(
-                await FileSystem.OpenAppPackageFileAsync("dreamstime_111325605_correct.wav"));
-            _buttonPlayer = AudioManager.Current.CreatePlayer(
-                await FileSystem.OpenAppPackageFileAsync("short-switch.wav"));
             _buttonDownPlayer = AudioManager.Current.CreatePlayer(
                 await FileSystem.OpenAppPackageFileAsync("scoreboard-button-down.wav"));
             _buttonUpPlayer = AudioManager.Current.CreatePlayer(
                 await FileSystem.OpenAppPackageFileAsync("scoreboard-button-up.wav"));
-            _errorPlayer = AudioManager.Current.CreatePlayer(
-                await FileSystem.OpenAppPackageFileAsync("computerbeep_3.wav"));
         }
 
         public void OnButtonPressed()

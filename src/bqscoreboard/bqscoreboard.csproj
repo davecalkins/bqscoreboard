@@ -49,11 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Raw\computerbeep_3.wav" />
-	  <None Remove="Resources\Raw\dreamstime_111325605_correct.wav" />
 	  <None Remove="Resources\Raw\scoreboard-button-down.wav" />
 	  <None Remove="Resources\Raw\scoreboard-button-up.wav" />
-	  <None Remove="Resources\Raw\short-switch.wav" />
 	</ItemGroup>
 
 	<ItemGroup>
