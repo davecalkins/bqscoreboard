@@ -1,0 +1,3 @@
+icon used from Google Fonts Material library.
+
+https://fonts.google.com/icons?icon.query=book
