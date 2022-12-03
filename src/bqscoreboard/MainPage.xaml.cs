@@ -2,15 +2,28 @@
 
 public partial class MainPage : ContentPage
 {
+    private MainPageViewModel _viewModel;
+
 	public MainPage()
 	{
 		InitializeComponent();
-        (BindingContext as MainPageViewModel)?.Initialize();
+        _viewModel = BindingContext as MainPageViewModel;
+        _viewModel?.Initialize();
     }
 
     private void TeamNameChanged(object sender, TextChangedEventArgs e)
     {
-        (BindingContext as MainPageViewModel)?.OnTeamNameChanged();
+        _viewModel?.OnTeamNameChanged();
+    }
+
+    private void Button_OnPressed(object sender, EventArgs e)
+    {
+        _viewModel?.OnButtonPressed();
+    }
+
+    private void Button_OnReleased(object sender, EventArgs e)
+    {
+        _viewModel?.OnButtonReleased();
     }
 }
 

@@ -78,8 +78,6 @@ namespace bqscoreboard
             Team1Score = Team2Score = Team3Score = 0;
 
             Save();
-
-            _resetPlayer.Play();
         });
 
         public ICommand QuestionSuffixToggle => new Command(() =>
@@ -99,34 +97,24 @@ namespace bqscoreboard
             }
 
             Save();
-            _buttonPlayer.Play();
         });
 
-        public ICommand QuestionMinus1 => new Command(() =>
-        {
-            if (QuestionNumber <= 1)
-            {
-                _errorPlayer.Play();
-                return;
-            }
+        public ICommand QuestionMinus1 => new Command(() => { QuestionNumber -= 1; if (QuestionNumber < 1) QuestionNumber = 1; Save(); });
+        public ICommand QuestionPlus1 => new Command(() => { QuestionNumber += 1; Save(); });
 
-            QuestionNumber -= 1;
-            Save(); 
-            _buttonPlayer.Play();
-        });
-        public ICommand QuestionPlus1 => new Command(() => { QuestionNumber += 1; Save(); _buttonPlayer.Play(); });
+        public ICommand Team1Minus10 => new Command(() => { Team1Score -= 10; Save(); });
+        public ICommand Team1Plus10 => new Command(() => { Team1Score += 10; Save(); });
 
-        public ICommand Team1Minus10 => new Command(() => { Team1Score -= 10; Save(); _buttonPlayer.Play(); });
-        public ICommand Team1Plus10 => new Command(() => { Team1Score += 10; Save(); _buttonPlayer.Play(); });
+        public ICommand Team2Minus10 => new Command(() => { Team2Score -= 10; Save(); });
+        public ICommand Team2Plus10 => new Command(() => { Team2Score += 10; Save(); });
 
-        public ICommand Team2Minus10 => new Command(() => { Team2Score -= 10; Save(); _buttonPlayer.Play(); });
-        public ICommand Team2Plus10 => new Command(() => { Team2Score += 10; Save(); _buttonPlayer.Play(); });
-
-        public ICommand Team3Minus10 => new Command(() => { Team3Score -= 10; Save(); _buttonPlayer.Play(); });
-        public ICommand Team3Plus10 => new Command(() => { Team3Score += 10; Save(); _buttonPlayer.Play(); });
+        public ICommand Team3Minus10 => new Command(() => { Team3Score -= 10; Save(); });
+        public ICommand Team3Plus10 => new Command(() => { Team3Score += 10; Save(); });
 
         private IAudioPlayer _resetPlayer = null;
         private IAudioPlayer _buttonPlayer = null;
+        private IAudioPlayer _buttonDownPlayer = null;
+        private IAudioPlayer _buttonUpPlayer = null;
         private IAudioPlayer _errorPlayer = null;
 
         public async void Initialize()
@@ -137,8 +125,22 @@ namespace bqscoreboard
                 await FileSystem.OpenAppPackageFileAsync("dreamstime_111325605_correct.wav"));
             _buttonPlayer = AudioManager.Current.CreatePlayer(
                 await FileSystem.OpenAppPackageFileAsync("short-switch.wav"));
+            _buttonDownPlayer = AudioManager.Current.CreatePlayer(
+                await FileSystem.OpenAppPackageFileAsync("scoreboard-button-down.wav"));
+            _buttonUpPlayer = AudioManager.Current.CreatePlayer(
+                await FileSystem.OpenAppPackageFileAsync("scoreboard-button-up.wav"));
             _errorPlayer = AudioManager.Current.CreatePlayer(
                 await FileSystem.OpenAppPackageFileAsync("computerbeep_3.wav"));
+        }
+
+        public void OnButtonPressed()
+        {
+            _buttonDownPlayer.Play();
+        }
+
+        public void OnButtonReleased()
+        {
+            _buttonUpPlayer.Play();
         }
 
         private bool _isLoading = false;

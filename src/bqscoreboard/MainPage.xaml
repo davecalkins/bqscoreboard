@@ -149,6 +149,8 @@
                 Grid.Column="0"
                 Text="X"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding ResetScoreboard}"/>
 
             <Button
@@ -156,6 +158,8 @@
                 Grid.Column="1"
                 Text="AB"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding QuestionSuffixToggle}"/>
 
             <Button
@@ -163,6 +167,8 @@
                 Grid.Column="2"
                 Text="-1"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding QuestionMinus1}"/>
 
             <Button
@@ -170,6 +176,8 @@
                 Grid.Column="3"
                 Text="+1"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding QuestionPlus1}"/>
 
         </Grid>
@@ -186,6 +194,8 @@
                 Grid.Column="0"
                 Text="-10"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding Team1Minus10}"/>
 
             <Button
@@ -193,6 +203,8 @@
                 Grid.Column="1"
                 Text="+10"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding Team1Plus10}"/>
 
         </Grid>
@@ -209,6 +221,8 @@
                 Grid.Column="0"
                 Text="-10"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding Team2Minus10}"/>
 
             <Button
@@ -216,6 +230,8 @@
                 Grid.Column="1"
                 Text="+10"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding Team2Plus10}"/>
 
         </Grid>
@@ -232,6 +248,8 @@
                 Grid.Column="0"
                 Text="-10"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding Team3Minus10}"/>
 
             <Button
@@ -239,6 +257,8 @@
                 Grid.Column="1"
                 Text="+10"
                 Style="{StaticResource ScoreButtonStyle}"
+                Pressed="Button_OnPressed"
+                Released="Button_OnReleased"
                 Command="{Binding Team3Plus10}"/>
 
         </Grid>
