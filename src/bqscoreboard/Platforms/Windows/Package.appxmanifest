@@ -10,7 +10,7 @@
   <Properties>
     <DisplayName>$placeholder$</DisplayName>
     <PublisherDisplayName>User Name</PublisherDisplayName>
-    <Logo>$placeholder$.png</Logo>
+    <Logo>scaled-assets\packagelogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -27,11 +27,17 @@
       <uap:VisualElements
         DisplayName="$placeholder$"
         Description="$placeholder$"
-        Square150x150Logo="$placeholder$.png"
-        Square44x44Logo="$placeholder$.png"
+        Square150x150Logo="scaled-assets\mediumtile.png"
+        Square44x44Logo="scaled-assets\appicon.png"
         BackgroundColor="transparent">
-        <uap:DefaultTile Square71x71Logo="$placeholder$.png" Wide310x150Logo="$placeholder$.png" Square310x310Logo="$placeholder$.png" />
-        <uap:SplashScreen Image="$placeholder$.png" />
+        <uap:DefaultTile Square71x71Logo="scaled-assets\smalltile.png" Wide310x150Logo="scaled-assets\widetile.png" Square310x310Logo="scaled-assets\largetile.png"  ShortName="bqscoreboard">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square310x310Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square150x150Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="scaled-assets\splashscreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
