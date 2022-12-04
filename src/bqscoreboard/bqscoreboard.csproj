@@ -72,6 +72,11 @@
 	  <None Remove="scaled-assets\appicon.targetsize-48.png" />
 	  <None Remove="scaled-assets\appicon.targetsize-48_altform-lightunplated.png" />
 	  <None Remove="scaled-assets\appicon.targetsize-48_altform-unplated.png" />
+	  <None Remove="scaled-assets\badgelogo.scale-100.png" />
+	  <None Remove="scaled-assets\badgelogo.scale-125.png" />
+	  <None Remove="scaled-assets\badgelogo.scale-150.png" />
+	  <None Remove="scaled-assets\badgelogo.scale-200.png" />
+	  <None Remove="scaled-assets\badgelogo.scale-400.png" />
 	  <None Remove="scaled-assets\largetile.scale-100.png" />
 	  <None Remove="scaled-assets\largetile.scale-125.png" />
 	  <None Remove="scaled-assets\largetile.scale-150.png" />
@@ -125,6 +130,11 @@
 	  <Content Include="scaled-assets\appicon.targetsize-48.png" />
 	  <Content Include="scaled-assets\appicon.targetsize-48_altform-lightunplated.png" />
 	  <Content Include="scaled-assets\appicon.targetsize-48_altform-unplated.png" />
+	  <Content Include="scaled-assets\badgelogo.scale-100.png" />
+	  <Content Include="scaled-assets\badgelogo.scale-125.png" />
+	  <Content Include="scaled-assets\badgelogo.scale-150.png" />
+	  <Content Include="scaled-assets\badgelogo.scale-200.png" />
+	  <Content Include="scaled-assets\badgelogo.scale-400.png" />
 	  <Content Include="scaled-assets\largetile.scale-100.png" />
 	  <Content Include="scaled-assets\largetile.scale-125.png" />
 	  <Content Include="scaled-assets\largetile.scale-150.png" />

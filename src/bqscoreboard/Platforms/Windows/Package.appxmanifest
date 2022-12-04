@@ -38,6 +38,7 @@
           </uap:ShowNameOnTiles>
         </uap:DefaultTile >
         <uap:SplashScreen Image="scaled-assets\splashscreen.png" />
+        <uap:LockScreen Notification="badge" BadgeLogo="scaled-assets\badgelogo.png"/>
       </uap:VisualElements>
     </Application>
   </Applications>
