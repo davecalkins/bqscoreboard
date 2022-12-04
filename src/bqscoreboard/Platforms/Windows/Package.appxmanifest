@@ -5,7 +5,7 @@
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
   IgnorableNamespaces="uap rescap">
 
-  <Identity Name="bqscoreboard" Publisher="CN=David_Calkins" Version="2022.1.2.0" />
+  <Identity Name="22953DavidCalkins.bqscoreboard" Publisher="CN=E2EA062E-C7E2-48FB-9FC9-32AA220DBE52" Version="2022.1.2.0" />
 
   <Properties>
     <DisplayName>bqscoreboard</DisplayName>
