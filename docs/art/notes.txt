@@ -4,4 +4,8 @@ https://fonts.google.com/icons?icon.query=book
 
 https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Amenu_book%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
 
+Used the below inkscape command line to scale the SVG to various sized PNG files (below
+example is for 256x256 pixels):
+
+    inkscape --export-filename appicon-256.png -w 256 appicon-orig.svg
 
