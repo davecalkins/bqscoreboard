@@ -1,3 +1,7 @@
 icon used from Google Fonts Material library.
 
 https://fonts.google.com/icons?icon.query=book
+
+https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Amenu_book%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
+
+
