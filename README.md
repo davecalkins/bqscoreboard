@@ -1,4 +1,4 @@
-# bqscoreboard
+# ![appicon](docs/art/scaled-art/appicon-32.png) bqscoreboard
 
 This app is intended to provide a digital scoreboard for use in Bible quizzing competitions.  It can be used instead of the custom-built hardware scoreboards.  All that is needed is a computer, projector or large TV, and connectivity between the two for display.
 
